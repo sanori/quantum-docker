@@ -1,1 +1,1 @@
-FROM sanori/qiskit-notebook
+FROM sanori/qiskit-notebook:latest

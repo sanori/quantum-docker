@@ -1,1 +1,1 @@
-FROM sanori/cirq-notebook
+FROM sanori/cirq-notebook:latest

@@ -1,1 +1,1 @@
-FROM sanori/qsharp-notebook
+FROM sanori/qsharp-notebook:latest
