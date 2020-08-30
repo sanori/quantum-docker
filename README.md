@@ -3,7 +3,7 @@ Docker images of Quantum Computing frameworks with Jupyter notebooks
 
 * qiskit-notebook: IBM Qiskit
 * qsharp-notebook: Microsoft Q# and QDK
-* cirq-notebook(TBD): Google Cirq
+* cirq-notebook: Google Cirq
 
 ## How to use
 After executing the following command, connect to `localhost:8888/?token=blahblah` through the link in the text that comes out.
