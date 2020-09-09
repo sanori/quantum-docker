@@ -23,7 +23,7 @@ dev: ARGS?=
 dev: DARGS?=-v $(PWD)/work:/home/jovyan/work
 dev: PORT?=8888
 dev: ## Make a container from a tagged image
-	docker run -it --rm -p $(PORT):8888 $(DARGS) $(IMAGE) $(ARGS)
+	docker run -it --rm -p $(PORT):8888 $(DARGS) $(IMAGE):$(VERSION) $(ARGS)
 
 test: ## Make a test run against the latest image
 	pytest tests
