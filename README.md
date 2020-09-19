@@ -1,17 +1,9 @@
 # Docker Stacks of Quantum Computing
 Docker images of Quantum Computing frameworks with Jupyter notebooks
 
-* qiskit-notebook: IBM Qiskit
-* qsharp-notebook: Microsoft Q# and QDK
-* cirq-notebook: Google Cirq
+* [qiskit-notebook](qiskit-notebook): IBM Qiskit with visualization package
+* [qsharp-notebook](qsharp-notebook): Microsoft Q# and QDK with `matplotlib` and `pytest`
+* [cirq-notebook](cirq-notebook): Google Cirq with contrib packages
 
-## How to use
-After executing the following command, connect to `localhost:8888/?token=blahblah` through the link in the text that comes out.
-```sh
-docker run -it --rm -p 8888:8888 sanori/qiskit-notebook
-```
-
-You can save Jupyter notebooks in current directory by attaching current directory (`$PWD`) to work directory as follows:
-```sh
-docker run -it --rm -p 8888:8888 -v "$PWD":/home/jovyan/work sanori/qiskit-notebook
-```
+All the docker images are based on [`jupyter/base-notebook`](https://hub.docker.com/r/jupyter/base-notebook).
+Therefore, we can take advantage of the convenient features of [Jupyter Docker Stacks](https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html).
