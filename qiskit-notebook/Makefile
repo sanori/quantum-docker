@@ -15,7 +15,7 @@ help:
 clean: ## Make clean the build environment
 	docker image prune
 
-build: DARGS?=--build-arg qiskit_version=$(QISKIT_VERSION)
+build: DARGS?=--pull --build-arg qiskit_version=$(QISKIT_VERSION)
 build: ## Make the latest build of the image
 	docker build $(DARGS) --rm --force-rm -t $(IMAGE):$(TAG) -t $(IMAGE):$(VERSION) .
 

@@ -16,7 +16,7 @@ help:
 clean: ## Make clean the build environment
 	docker image prune
 
-build: DARGS?=--build-arg cirq_version=$(CIRQ_VERSION)
+build: DARGS?=--pull --build-arg cirq_version=$(CIRQ_VERSION)
 build: ## Make the latest build of the image
 	docker build $(DARGS) --rm --force-rm -t $(IMAGE):$(TAG) -t $(IMAGE):$(VERSION) .
 
