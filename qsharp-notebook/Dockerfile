@@ -29,5 +29,8 @@ RUN conda install --quiet --yes -c quantum-engineering \
   && fix-permissions "${CONDA_DIR}" \
   && fix-permissions "/home/${NB_USER}"
 
+# generate __pycache__
+RUN python -c "import qsharp"
+
 # Copy default notebooks
 COPY --chown=${NB_UID}:${NB_GID} work /home/$NB_USER/work
