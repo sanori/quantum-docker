@@ -8,13 +8,14 @@ USER root
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update \
  && apt-get install -yq --no-install-recommends \
-    gcc \
-    libc6-dev \
+   gcc \
+   libc6-dev \
  && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Qiskit with visualization
 USER $NB_UID
-RUN pip install 'qiskit[visualization]'==${qiskit_version}
+RUN pip install --no-cache-dir \
+   'qiskit[visualization]'==${qiskit_version}
 
 # Copy default notebooks
-COPY ./work /home/$NB_USER/work
+COPY --chown=${NB_UID}:${NB_GID} work /home/$NB_USER/work
