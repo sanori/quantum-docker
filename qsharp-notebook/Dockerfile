@@ -1,5 +1,4 @@
-ARG python_version=3.7.6
-FROM jupyter/base-notebook:python-${python_version}
+FROM jupyter/base-notebook
 
 ARG qsharp_version
 RUN test -n "$qsharp_version" || (echo "qsharp_version is not set" && false)
@@ -21,15 +20,17 @@ RUN apt-get update \
 
 USER $NB_UID
 
-# Install Q# kernel
-RUN conda install --quiet --yes -c quantum-engineering \
-    qsharp=${qsharp_version} \
-    pytest matplotlib \
-  && conda clean --all -f -y \
-  && fix-permissions "${CONDA_DIR}" \
-  && fix-permissions "/home/${NB_USER}"
+# Install Q# package
+RUN pip install --no-cache-dir \
+  qsharp==${qsharp_version}
 
-# generate __pycache__
+# Install IQ# kernel
+RUN dotnet tool install Microsoft.Quantum.IQSharp -g \
+  --version ${qsharp_version}
+RUN .dotnet/tools/dotnet-iqsharp install \
+  --user --path-to-tool="${PWD}/.dotnet/tools/dotnet-iqsharp"
+
+# generate cache files
 RUN python -c "import qsharp"
 
 # Copy default notebooks

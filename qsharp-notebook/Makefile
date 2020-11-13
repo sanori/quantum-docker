@@ -4,7 +4,6 @@
 IMAGE:=sanori/qsharp-notebook
 TAG?=latest
 QSHARP_VERSION?=$(shell ./pipver qsharp)
-PYTHON_VERSION?=3.7.6
 VERSION:=$(QSHARP_VERSION)
 # Shell that make should use
 SHELL:=bash
@@ -17,8 +16,7 @@ help:
 clean: ## Make clean the build environment
 	docker image prune
 
-build: DARGS?=--pull --build-arg qsharp_version=$(QSHARP_VERSION) \
-	--build-arg python_version=$(PYTHON_VERSION)
+build: DARGS?=--pull --build-arg qsharp_version=$(QSHARP_VERSION)
 build: ## Make the latest build of the image
 	docker build $(DARGS) --rm --force-rm -t $(IMAGE):$(TAG) -t $(IMAGE):$(VERSION) .
 
