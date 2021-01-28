@@ -8,7 +8,7 @@ namespace NamespaceQFT {
 
     operation Perform3qubitQFT() : Unit {
 
-        using (qs = Qubit[3]) {
+        use qs = Qubit[3] {
 
             Message("Initial state |000>:");
             DumpMachine();
