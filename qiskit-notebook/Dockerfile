@@ -15,6 +15,7 @@ RUN apt-get update \
 # Install Qiskit with visualization
 USER $NB_UID
 RUN pip install --no-cache-dir \
+   matplotlib==3.3.4 \
    'qiskit[visualization]'==${qiskit_version}
 
 # Copy default notebooks
