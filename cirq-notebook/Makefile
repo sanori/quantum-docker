@@ -20,6 +20,10 @@ build: DARGS?=--pull --build-arg cirq_version=$(CIRQ_VERSION)
 build: ## Make the latest build of the image
 	docker build $(DARGS) --rm --force-rm -t $(IMAGE):$(TAG) -t $(IMAGE):$(VERSION) .
 
+push: ## Push the latest image
+	docker push $(IMAGE):$(VERSION)
+	docker push $(IMAGE):latest
+
 dev: ARGS?=
 dev: DARGS?=-v $(PWD)/work:/home/jovyan/work
 dev: PORT?=8888
