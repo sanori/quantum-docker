@@ -1,4 +1,4 @@
-.PHONY: help build dev test test-env
+.PHONY: help build push dev test test-env
 
 # Docker image name and tag
 IMAGE:=sanori/qsharp-notebook
@@ -19,6 +19,10 @@ clean: ## Make clean the build environment
 build: DARGS?=--pull --build-arg qsharp_version=$(QSHARP_VERSION)
 build: ## Make the latest build of the image
 	docker build $(DARGS) --rm --force-rm -t $(IMAGE):$(TAG) -t $(IMAGE):$(VERSION) .
+
+push: ## Push the latest image
+	docker push $(IMAGE):$(VERSION)
+	docker push $(IMAGE):latest
 
 dev: ARGS?=
 dev: DARGS?=-v $(PWD)/work:/home/jovyan/work
