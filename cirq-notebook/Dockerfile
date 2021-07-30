@@ -16,7 +16,8 @@ RUN apt-get update \
 USER $NB_UID
 # Install Cirq
 RUN pip install --no-cache-dir \
-  'cirq[contrib]'==${cirq_version}
+  cirq==${cirq_version} \
+  'cirq-core[contrib]'==${cirq_version}
 
 # Copy default notebooks
 COPY --chown=${NB_UID}:${NB_GID} work /home/$NB_USER/work
