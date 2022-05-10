@@ -8,30 +8,29 @@ namespace NamespaceQFT {
 
     operation Perform3qubitQFT() : Unit {
 
-        use qs = Qubit[3] {
+        use qs = Qubit[3];
 
-            Message("Initial state |000>:");
-            DumpMachine();
+        Message("Initial state |000>:");
+        DumpMachine();
 
-            //QFT:
-            //first qubit:
-            H(qs[0]);
-            Controlled R1([qs[1]], (PI()/2.0, qs[0]));
-            Controlled R1([qs[2]], (PI()/4.0, qs[0]));
+        //QFT:
+        //first qubit:
+        H(qs[0]);
+        Controlled R1([qs[1]], (PI()/2.0, qs[0]));
+        Controlled R1([qs[2]], (PI()/4.0, qs[0]));
 
-            //second qubit:
-            H(qs[1]);
-            Controlled R1([qs[2]], (PI()/2.0, qs[1]));
+        //second qubit:
+        H(qs[1]);
+        Controlled R1([qs[2]], (PI()/2.0, qs[1]));
 
-            //third qubit:
-            H(qs[2]);
+        //third qubit:
+        H(qs[2]);
 
-            SWAP(qs[2], qs[0]);
+        SWAP(qs[2], qs[0]);
 
-            Message("After:");
-            DumpMachine();
+        Message("After:");
+        DumpMachine();
 
-            ResetAll(qs);
-        }
+        ResetAll(qs);
     }
 }
