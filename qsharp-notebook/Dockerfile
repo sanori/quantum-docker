@@ -16,6 +16,7 @@ RUN apt-get update \
     apt-transport-https \
     dotnet-sdk-6.0 \
     libgomp1 \
+    libzmq3-dev pkg-config gcc \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 USER $NB_UID
